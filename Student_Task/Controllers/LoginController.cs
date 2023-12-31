@@ -20,11 +20,13 @@ namespace Student_Task.Controllers
         {
             var hashpassword = new Authentication();
 
+            Console.WriteLine($"Received: {user.LoginId} - {user.Password}");
             LoginDataAccessLayer loginDataAccessLayer = new LoginDataAccessLayer();
 
             if (ModelState.IsValid)
             {
-                string passwordHash = hashpassword.MD5Hash(user.Password);
+                Console.WriteLine("Valid model");
+                //string passwordHash = hashpassword.MD5Hash(user.Password);
 
                 LoginModel? loginUser = loginDataAccessLayer.CheckLogin(user.LoginId, user.Password);
 
@@ -36,6 +38,10 @@ namespace Student_Task.Controllers
                     HttpContext.Session.SetString("Role", loginUser.Role);
 
                     return RedirectToAction("Index", "Student");
+                }
+                else
+                {
+                    Console.WriteLine("No user found");
                 }
             }
 

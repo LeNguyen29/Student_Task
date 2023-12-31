@@ -3,6 +3,8 @@
     ViewData["Title"] = "Index";
 }
 
+@model LoginModel
+
 <head>
     <title>Login Page</title>
 </head>
@@ -12,17 +14,21 @@
     <div>
         <form asp-action="Index" asp-controller="Login">
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input id="username" type="text" placeholder="Account1230">
+                <label for="username" asp-for="LoginId">Username:</label>
+                <input id="username" asp-for="LoginId" type="text" placeholder="Account1230">
+                <span asp-validation-for="LoginId" class="text-danger"></span>
             </div>
             
             <br>
 
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input id="password" type="password" placeholder="Vip1230">
+                <label for="password" asp-for="Password">Password:</label>
+                <input id="password" asp-for="Password" type="password" placeholder="Vip1230">
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            
+
+            <br>
+
             <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Login">
             </div>
