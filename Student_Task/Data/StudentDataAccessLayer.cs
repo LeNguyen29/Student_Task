@@ -9,9 +9,9 @@ namespace Student_Task.Data
     {
         string connectionString = DatabaseContext.CString;
 
-        public List<Student> GetAllStudents()
+        public List<StudentModel> GetAllStudents()
         {
-            List<Student> studentList = new List<Student>();
+            List<StudentModel> studentList = new List<StudentModel>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -22,7 +22,7 @@ namespace Student_Task.Data
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Student student = new Student
+                    StudentModel student = new StudentModel
                     {
                         ID = Convert.ToInt32(reader["ID"]),
                         FullName = reader["FullName"].ToString(),
@@ -41,7 +41,7 @@ namespace Student_Task.Data
             return studentList;
         }
 
-        public void AddStudent(Student student)
+        public void AddStudent(StudentModel student)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -59,7 +59,7 @@ namespace Student_Task.Data
             }
         }
 
-        public void UpdateStudent(Student student)
+        public void UpdateStudent(StudentModel student)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -78,9 +78,9 @@ namespace Student_Task.Data
             }
         }
 
-        public Student GetStudentData(int? id)
+        public StudentModel GetStudentData(int? id)
         {
-            Student student = new Student();
+            StudentModel student = new StudentModel();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

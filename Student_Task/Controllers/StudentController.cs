@@ -17,7 +17,7 @@ namespace Student_Task.Controllers
         // GET: StudentController
         public ActionResult Index()
         {
-            List<Student> students = studentDataAccessLayer.GetAllStudents();
+            List<StudentModel> students = studentDataAccessLayer.GetAllStudents();
 
             return View(students);
         }
@@ -25,7 +25,7 @@ namespace Student_Task.Controllers
         // GET: StudentController/Details/5
         public ActionResult Details(int id)
         {
-            Student student = studentDataAccessLayer.GetStudentData(id);
+            StudentModel student = studentDataAccessLayer.GetStudentData(id);
             return View(student);
         }
 
@@ -38,7 +38,7 @@ namespace Student_Task.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Student student)
+        public ActionResult Create(StudentModel student)
         {
             try
             {
@@ -57,14 +57,14 @@ namespace Student_Task.Controllers
         public ActionResult Edit(int id)
         {
             Console.WriteLine(id);
-            Student student = studentDataAccessLayer.GetStudentData(id);
+            StudentModel student = studentDataAccessLayer.GetStudentData(id);
             return View(student);
         }
 
         // POST: StudentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Student student)
+        public ActionResult Edit(StudentModel student)
         {
             try
             {
@@ -82,14 +82,14 @@ namespace Student_Task.Controllers
         // GET: StudentController/Delete/5
         public ActionResult Delete(int id)
         {
-            Student student = studentDataAccessLayer.GetStudentData(id);
+            StudentModel student = studentDataAccessLayer.GetStudentData(id);
             return View(student);
         }
 
         // POST: StudentController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Student student)
+        public ActionResult Delete(StudentModel student)
         {
             try
             {
